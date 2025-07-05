@@ -1,5 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, ViewChild } from '@angular/core';
+import { MatSidenav } from '@angular/material/sidenav';
 @Component({
   selector: 'app-header',
   imports: [],
@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
+  @ViewChild('sidenav') sidenav!: MatSidenav;
 
+  toggleMobileMenu(): void {
+    this.sidenav.toggle();
+  }
 }
