@@ -6,12 +6,19 @@
       <span class="logo-sub">IMPACT ECOSYSTEM</span>
     </div>
     <nav class="main-nav">
-      <a href="#">Home</a>
-      <a href="#">About Us</a>
-      <a href="#">Our Ecosystem</a>
-      <a href="#">Programs</a>
-      <a href="#">Impact Stories</a>
-      <a href="#">Partner With Us</a>
+      <a
+        routerLink=""
+        routerLinkActive="active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        >Home</a
+      >
+      <a routerLink="/about" routerLinkActive="active">About Us</a>
+      <a routerLink="/ecosystem" routerLinkActive="active">Our Ecosystem</a>
+      <a routerLink="/programs" routerLinkActive="active">Programs</a>
+      <a routerLink="/impact-stories" routerLinkActive="active"
+        >Impact Stories</a
+      >
+      <a routerLink="/partner" routerLinkActive="active">Partner With Us</a>
       <button class="apply-btn">Apply</button>
     </nav>
   </div>
