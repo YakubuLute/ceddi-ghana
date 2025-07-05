@@ -5,7 +5,16 @@
       <span class="logo-text">CEDDI</span>
       <span class="logo-sub">IMPACT ECOSYSTEM</span>
     </div>
-    <nav class="main-nav">
+    <button
+      class="menu-toggle"
+      (click)="toggleMenu()"
+      aria-label="Toggle navigation menu"
+    >
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+      <span class="hamburger"></span>
+    </button>
+    <nav class="main-nav" [class.open]="isMenuOpen">
       <a
         routerLink=""
         routerLinkActive="active"
