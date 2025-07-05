@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, HostListener } from '@angular/core'
 import { RouterModule } from '@angular/router'
 
 @Component({
@@ -10,8 +10,25 @@ import { RouterModule } from '@angular/router'
 })
 export class HeaderComponent {
   isMenuOpen: boolean = false
+  isScrolled: boolean = false
 
-  toggleMenu () {
+  toggleMenu (): void {
     this.isMenuOpen = !this.isMenuOpen
+  }
+
+  closeMenu (): void {
+    this.isMenuOpen = false
+  }
+
+  @HostListener('window:scroll', [])
+  onWindowScroll (): void {
+    this.isScrolled = window.pageYOffset > 50
+  }
+
+  @HostListener('window:resize', [])
+  onWindowResize (): void {
+    if (window.innerWidth > 900) {
+      this.isMenuOpen = false
+    }
   }
 }

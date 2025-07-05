@@ -1,35 +1,61 @@
-<header class="main-header">
+<header class="main-header" [class.scrolled]="isScrolled">
   <div class="header-container">
     <div class="logo">
       <span class="logo-icon">E</span>
       <span class="logo-text">CEDDI</span>
       <span class="logo-sub">IMPACT ECOSYSTEM</span>
     </div>
+
     <button
       class="menu-toggle"
+      [class.open]="isMenuOpen"
       (click)="toggleMenu()"
       aria-label="Toggle navigation menu"
+      [attr.aria-expanded]="isMenuOpen"
     >
       <span class="hamburger"></span>
       <span class="hamburger"></span>
       <span class="hamburger"></span>
     </button>
+
     <nav class="main-nav" [class.open]="isMenuOpen">
       <a
         routerLink=""
         routerLinkActive="active"
         [routerLinkActiveOptions]="{ exact: true }"
-        >Home</a
+        (click)="closeMenu()"
       >
-      <a routerLink="/about" routerLinkActive="active">About Us</a>
-      <a routerLink="/ecosystem" routerLinkActive="active">Our Ecosystem</a>
-      <a routerLink="/programs" routerLinkActive="active">Programs</a>
-      <a routerLink="/impact-stories" routerLinkActive="active"
-        >Impact Stories</a
+        Home
+      </a>
+      <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">
+        About Us
+      </a>
+      <a
+        routerLink="/ecosystem"
+        routerLinkActive="active"
+        (click)="closeMenu()"
       >
-      <a routerLink="/partner" routerLinkActive="active">Partner With Us</a>
-      <a routerLink="/contact" routerLinkActive="active">Contact Us</a>
-      <button class="apply-btn">Apply</button>
+        Our Ecosystem
+      </a>
+      <a routerLink="/programs" routerLinkActive="active" (click)="closeMenu()">
+        Programs
+      </a>
+      <a
+        routerLink="/impact-stories"
+        routerLinkActive="active"
+        (click)="closeMenu()"
+      >
+        Impact Stories
+      </a>
+      <a routerLink="/partner" routerLinkActive="active" (click)="closeMenu()">
+        Partner With Us
+      </a>
+      <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">
+        Contact Us
+      </a>
+      <button class="apply-btn">
+        <span>Apply</span>
+      </button>
     </nav>
   </div>
 </header>
