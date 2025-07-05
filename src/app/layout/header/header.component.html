@@ -2,8 +2,10 @@
   <div class="header-container">
     <div class="logo">
       <span class="logo-icon">E</span>
-      <span class="logo-text">CEDDI</span>
-      <span class="logo-sub">IMPACT ECOSYSTEM</span>
+      <div class="logo-content">
+        <span class="logo-text">CEDDI</span>
+        <span class="logo-sub">IMPACT ECOSYSTEM</span>
+      </div>
     </div>
 
     <button
@@ -27,32 +29,60 @@
       >
         Home
       </a>
-      <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()">
-        About Us
-      </a>
-      <a
-        routerLink="/ecosystem"
-        routerLinkActive="active"
-        (click)="closeMenu()"
-      >
-        Our Ecosystem
-      </a>
+
+      <div class="dropdown" [class.open]="openDropdown === 'about'">
+        <button
+          class="dropdown-toggle"
+          (click)="toggleDropdown('about')"
+          [class.active]="openDropdown === 'about'"
+        >
+          About <app-icon iconPath="M7 10l5 5 5-5z" [size]="15"></app-icon>
+        </button>
+        <div class="dropdown-menu">
+          <a routerLink="/about" routerLinkActive="active" (click)="closeMenu()"
+            >About Us</a
+          >
+          <a
+            routerLink="/ecosystem"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+            >Our Ecosystem</a
+          >
+        </div>
+      </div>
+
       <a routerLink="/programs" routerLinkActive="active" (click)="closeMenu()">
         Programs
       </a>
-      <a
-        routerLink="/impact-stories"
-        routerLinkActive="active"
-        (click)="closeMenu()"
-      >
-        Impact Stories
-      </a>
-      <a routerLink="/partner" routerLinkActive="active" (click)="closeMenu()">
-        Partner With Us
-      </a>
+
+      <div class="dropdown" [class.open]="openDropdown === 'community'">
+        <button
+          class="dropdown-toggle"
+          (click)="toggleDropdown('community')"
+          [class.active]="openDropdown === 'community'"
+        >
+          Community <app-icon iconPath="M7 10l5 5 5-5z" [size]="15"></app-icon>
+        </button>
+        <div class="dropdown-menu">
+          <a
+            routerLink="/impact-stories"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+            >Impact Stories</a
+          >
+          <a
+            routerLink="/partner"
+            routerLinkActive="active"
+            (click)="closeMenu()"
+            >Partner With Us</a
+          >
+        </div>
+      </div>
+
       <a routerLink="/contact" routerLinkActive="active" (click)="closeMenu()">
-        Contact Us
+        Contact
       </a>
+
       <button class="apply-btn">
         <span>Apply</span>
       </button>
