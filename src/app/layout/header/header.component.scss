@@ -58,6 +58,10 @@
     font-weight: 500;
     font-size: 1rem;
     transition: color 0.2s;
+    &.active {
+      color: #1db954;
+      font-weight: 600;
+    }
     &:hover {
       color: #1db954;
     }
