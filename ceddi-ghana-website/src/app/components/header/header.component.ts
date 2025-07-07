@@ -1,21 +1,22 @@
-import { Component, ViewChild } from '@angular/core';
-import { MatSidenav, MatSidenavModule } from '@angular/material/sidenav';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
-import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatMenuModule } from '@angular/material/menu';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
+import { Component, inject, OnInit } from '@angular/core';
+import { Router, NavigationEnd, RouterLink } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NgbCollapseModule } from '@ng-bootstrap/ng-bootstrap';
 @Component({
   selector: 'app-header',
-  imports: [MatCardModule, MatSidenavModule, MatIconModule, MatToolbarModule, MatMenuModule, MatDividerModule, MatListModule],
+  imports: [CommonModule, RouterLink, NgbCollapseModule],
   templateUrl: './header.component.html',
-  styleUrl: './header.component.scss'
+  styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
-  @ViewChild('sidenav') sidenav!: MatSidenav;
+export class HeaderComponent implements OnInit {
+  isCollapsed = true;
+  private router: Router = inject(Router);
 
-  toggleMobileMenu(): void {
-    this.sidenav.toggle();
+  ngOnInit(): void {
+    this.router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.isCollapsed = true; // Close the navbar when route changes
+      }
+    });
   }
 }
