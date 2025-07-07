@@ -1,19 +1,22 @@
+import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { MatIconModule } from '@angular/material/icon';
-import { MatCardModule } from '@angular/material/card';
-import { MatDividerModule } from '@angular/material/divider';
-import { MatListModule } from '@angular/material/list';
+
+import { Router, RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  imports: [MatCardModule, MatDividerModule, MatListModule, MatIconModule],
+  imports: [RouterLink, CommonModule],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss'
 })
 export class FooterComponent {
-  currentYear: number;
+  date: Date = new Date();
+  getPath(){
+    return this.router.url;
+  }
 
-  constructor() {
-    this.currentYear = new Date().getFullYear();
+  test : Date = new Date();
+
+  constructor(private router: Router) {
   }
 }

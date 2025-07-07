@@ -1,0 +1,38 @@
+@use '@angular/material' as mat;
+
+// Include the common styles for Angular Material
+@include mat.core();
+
+// Define a light theme
+$light-theme: mat.define-light-theme((
+  color: (
+    primary: mat.define-palette(mat.$indigo-palette),
+    accent: mat.define-palette(mat.$pink-palette, A200, A100, A400),
+    warn: mat.define-palette(mat.$red-palette),
+  )
+));
+
+// Apply the light theme
+@include mat.all-component-themes($light-theme);
+
+// Global styles
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+  background-color: #ffffff !important;
+  color: #212121 !important;
+}
+
+// Override Material dark theme classes
+.mat-app-background,
+.mat-drawer-container,
+.mat-sidenav-container,
+.mat-sidenav-content {
+  background-color: #ffffff !important;
+  color: #212121 !important;
+}
+
+// Ensure proper contrast for text
+.mat-typography {
+  color: #212121 !important;
+}
